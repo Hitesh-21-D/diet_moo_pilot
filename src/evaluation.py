@@ -4,7 +4,6 @@ from src.objectives import evaluate_objectives
 
 from src.constraints import (
     is_feasible,
-    evaluate_constraints,
 )
 
 
@@ -12,8 +11,11 @@ def diet_signature(diet):
     """
     Convert a decoded diet into a hashable representation.
 
-    This removes cases where two different numeric chromosomes
-    decode to the exact same practical diet.
+    Two chromosomes are treated as the same practical diet
+    when they contain the same foods and serving quantities,
+    even if those foods appear in different chromosome slots.
+
+    The optional NONE food is ignored.
     """
 
     signature = []
@@ -24,6 +26,12 @@ def diet_signature(diet):
 
         for food in foods:
 
+            if (
+                food["food_code"]
+                == "NONE"
+            ):
+                continue
+
             meal_signature.append(
                 (
                     food["food_code"],
@@ -33,6 +41,8 @@ def diet_signature(diet):
                     ),
                 )
             )
+
+        meal_signature.sort()
 
         signature.append(
             (
@@ -140,8 +150,12 @@ def calculate_feasibility_rate(
     nutrient_targets,
 ):
     """
-    Percentage of a final population/swarm satisfying all
-    original 13 hard constraints.
+    Fraction of a final population/swarm satisfying all
+    hard constraints in the current optimization problem.
+
+    For the expanded pilot, this includes the revised
+    nutrient, duplicate-food, active-food-count, and
+    meal-role constraints.
 
     Returns a value between 0 and 1.
     """
@@ -164,14 +178,9 @@ def calculate_feasibility_rate(
             chromosome
         )
 
-        constraints = evaluate_constraints(
-            diet=diet,
-            nutrient_targets=nutrient_targets,
-        )
-
-        if all(
-            value <= 0
-            for value in constraints
+        if is_feasible(
+            diet,
+            nutrient_targets,
         ):
             feasible_count += 1
 
@@ -193,10 +202,15 @@ def intervention_count(
 
     1. A baseline food is removed.
     2. A new food is introduced.
-    3. The serving quantity of an existing food changes
-       by at least 0.25 serving.
+    3. The quantity of a retained baseline food differs
+    by at least 0.25 serving from the baseline.
 
-    This provides the T value used later in PETQ.
+    The 0.25 threshold is the intervention-count criterion;
+    individual foods may use larger practical serving steps.
+
+    The optional NONE food is ignored.
+
+    This produces the T value used by PETQ.
     """
 
     interventions = 0
@@ -226,14 +240,23 @@ def intervention_count(
 
         for item in generated_foods:
 
-            code = item["food_code"]
+            code = item[
+                "food_code"
+            ]
 
-            generated_map[code] = (
+            if code == "NONE":
+                continue
+
+            generated_map[
+                code
+            ] = (
                 generated_map.get(
                     code,
                     0.0,
                 )
-                + item["servings"]
+                + item[
+                    "servings"
+                ]
             )
 
         all_codes = (

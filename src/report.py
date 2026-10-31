@@ -145,6 +145,14 @@ def create_diet_rows(
 
             for food in foods:
 
+                if (
+                    food[
+                        "food_code"
+                    ]
+                    == "NONE"
+                ):
+                    continue
+
                 row = {
                     "algorithm": (
                         algorithm_name
@@ -407,6 +415,14 @@ def print_selected_diets(
                 )
 
                 for food in foods:
+
+                    if (
+                        food[
+                            "food_code"
+                        ]
+                        == "NONE"
+                    ):
+                        continue
 
                     print(
                         f"  - "

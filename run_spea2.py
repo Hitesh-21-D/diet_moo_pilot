@@ -48,6 +48,14 @@ def print_diet(
 
         for food in foods:
 
+            if (
+                food[
+                    "food_code"
+                ]
+                == "NONE"
+            ):
+                continue
+
             print(
                 f"  - {food['food_name']} | "
                 f"{food['servings']:.2f} "
