@@ -1,0 +1,9 @@
+,UniqueFeasibleDiets,UniqueFeasibleDiets,UniqueFeasibleDiets,HV,HV,HV,IGD,IGD,IGD,Spacing,Spacing,Spacing,Feasibility,Feasibility,Feasibility,MeanNutritionDeviation,MeanNutritionDeviation,MeanNutritionDeviation,MeanHabitDeviation,MeanHabitDeviation,MeanHabitDeviation,MeanInterventions,MeanInterventions,MeanInterventions,Runtime,Runtime,Runtime,Evaluations,Evaluations,Evaluations,PETQ,PETQ,PETQ
+,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count
+Algorithm,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+APPO,0.0,0.0,3,0.0,0.0,3,,,0,,,0,0.0,0.0,3,,,0,,,0,,,0,17.015256233333883,7.3495619249698025,3,1000.0,0.0,3,0.0,0.0,3
+MOEA/D,3.3333333333333335,4.932882862316247,3,0.02060278826309131,0.02592206470733193,3,0.7739199420717393,0.9036843837681997,2,0.06370965678492069,0.09009906067936992,2,0.6666666666666666,0.5773502691896258,3,0.1460238139709286,0.03167565136921589,2,0.851645171957672,0.06838405362367918,2,19.77777777777778,1.7284832429004484,2,9.009398399999858,3.1149859536839775,3,924.0,0.0,3,0.04222860520630223,0.07075630436739182,3
+MOPSO,0.0,0.0,3,0.0,0.0,3,,,0,,,0,0.0,0.0,3,,,0,,,0,,,0,7.298536733333397,3.387007291157064,3,1000.0,0.0,3,0.0,0.0,3
+NSGA-II,0.0,0.0,3,0.0,0.0,3,,,0,,,0,0.0,0.0,3,,,0,,,0,,,0,7.66781009999977,1.3805846849949042,3,1000.0,0.0,3,0.0,0.0,3
+NSGA-III,0.0,0.0,3,0.0,0.0,3,,,0,,,0,0.0,0.0,3,,,0,,,0,,,0,6.932442533333415,2.3543750815627775,3,1000.0,0.0,3,0.0,0.0,3
+SPEA2,0.0,0.0,3,0.0,0.0,3,,,0,,,0,0.0,0.0,3,,,0,,,0,,,0,7.513028200000008,2.1607822300646133,3,1000.0,0.0,3,0.0,0.0,3

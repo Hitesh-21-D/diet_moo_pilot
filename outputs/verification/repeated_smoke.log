@@ -1,0 +1,40 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+Running NSGA-II seed 42 budget 1000
+Running NSGA-III seed 42 budget 1000
+Running MOEA/D seed 42 budget 1000
+Running SPEA2 seed 42 budget 1000
+Running MOPSO seed 42 budget 1000
+Running APPO seed 42 budget 1000
+Running NSGA-II seed 43 budget 1000
+Running NSGA-III seed 43 budget 1000
+Running MOEA/D seed 43 budget 1000
+Running SPEA2 seed 43 budget 1000
+Running MOPSO seed 43 budget 1000
+Running APPO seed 43 budget 1000
+Running NSGA-II seed 44 budget 1000
+Running NSGA-III seed 44 budget 1000
+Running MOEA/D seed 44 budget 1000
+Running SPEA2 seed 44 budget 1000
+Running MOPSO seed 44 budget 1000
+Running APPO seed 44 budget 1000
+Algorithm  Seed  UniqueFeasibleDiets       HV      IGD  Spacing  Feasibility  MeanNutritionDeviation  MeanHabitDeviation  MeanInterventions   Runtime  Evaluations     PETQ
+  NSGA-II    42                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.564504         1000 0.000000
+ NSGA-III    42                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  9.132138         1000 0.000000
+   MOEA/D    42                    9 0.049708 0.134919 0.127419          1.0                0.123626             0.80329          18.555556 11.494281          924 0.123915
+    SPEA2    42                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.649259         1000 0.000000
+    MOPSO    42                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.227459         1000 0.000000
+     APPO    42                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN 22.355324         1000 0.000000
+  NSGA-II    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.360940         1000 0.000000
+ NSGA-III    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  7.216100         1000 0.000000
+   MOEA/D    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN 10.019101          924 0.000000
+    SPEA2    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.868637         1000 0.000000
+    MOPSO    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN 10.124158         1000 0.000000
+     APPO    43                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN 20.057387         1000 0.000000
+  NSGA-II    44                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  6.077986         1000 0.000000
+ NSGA-III    44                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  4.449089         1000 0.000000
+   MOEA/D    44                    1 0.012100 1.412921 0.000000          1.0                0.168422             0.90000          21.000000  5.514812          924 0.002771
+    SPEA2    44                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  5.021189         1000 0.000000
+    MOPSO    44                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  3.543993         1000 0.000000
+     APPO    44                    0 0.000000      inf      NaN          0.0                     NaN                 NaN                NaN  8.633058         1000 0.000000
+Outputs: C:\Users\Hitesh\Desktop\diet_moo_pilot\outputs\experiments\20261031T045111479626Z_repeated

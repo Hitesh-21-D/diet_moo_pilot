@@ -1,0 +1,15 @@
+test_feasibility_first_and_archive (test_appo.APPOTests.test_feasibility_first_and_archive) ... ok
+test_initialization_reproducibility_and_structure (test_appo.APPOTests.test_initialization_reproducibility_and_structure) ... ok
+test_no_dual_diversity_is_disabled_in_both_paths (test_appo.APPOTests.test_no_dual_diversity_is_disabled_in_both_paths) ... ok
+test_operators_and_ablation_switches (test_appo.APPOTests.test_operators_and_ablation_switches) ... ok
+test_repair_budget_and_nonworsening (test_appo.APPOTests.test_repair_budget_and_nonworsening) ... ok
+test_representative_categories (test_appo.APPOTests.test_representative_categories) ... ok
+test_smoke_determinism_budget_and_returned_front (test_appo.APPOTests.test_smoke_determinism_budget_and_returned_front) ... ok
+test_structural_repair_invalid_genes_and_portions (test_appo.APPOTests.test_structural_repair_invalid_genes_and_portions) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 33.664s
+
+OK
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns

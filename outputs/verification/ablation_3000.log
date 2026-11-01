@@ -1,0 +1,14 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+Running APPO seed 42 budget 3000
+Running APPO-NoMemory seed 42 budget 3000
+Running APPO-NoRepair seed 42 budget 3000
+Running APPO-NoAdaptation seed 42 budget 3000
+Running APPO-NoDualDiversity seed 42 budget 3000
+           Algorithm  Seed  UniqueFeasibleDiets       HV      IGD  Spacing  Feasibility  MeanNutritionDeviation  MeanHabitDeviation  MeanInterventions   Runtime  Evaluations      PETQ
+                APPO    42                    1 0.064934 0.814531 0.000000         0.01                0.124445            0.846875          17.000000 22.372275         3000  0.027581
+       APPO-NoMemory    42                    2 0.078490 0.566844 0.000000         0.02                0.164948            0.877455          18.000000 17.907486         3000  0.047027
+       APPO-NoRepair    42                   56 0.664737 0.007352 0.092309         1.00                0.166975            0.632417          13.589286 19.036639         3000 33.732272
+   APPO-NoAdaptation    42                    5 0.181228 0.552833 0.053266         0.07                0.130369            0.811964          17.400000 16.389485         3000  0.112561
+APPO-NoDualDiversity    42                    1 0.064934 0.814531 0.000000         0.01                0.124445            0.846875          17.000000 18.608814         3000  0.027581
+Outputs: C:\Users\Hitesh\Desktop\diet_moo_pilot\outputs\experiments\20261031T045435989696Z_ablation

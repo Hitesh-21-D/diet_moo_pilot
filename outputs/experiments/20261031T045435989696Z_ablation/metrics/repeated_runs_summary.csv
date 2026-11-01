@@ -1,0 +1,8 @@
+,UniqueFeasibleDiets,UniqueFeasibleDiets,UniqueFeasibleDiets,HV,HV,HV,IGD,IGD,IGD,Spacing,Spacing,Spacing,Feasibility,Feasibility,Feasibility,MeanNutritionDeviation,MeanNutritionDeviation,MeanNutritionDeviation,MeanHabitDeviation,MeanHabitDeviation,MeanHabitDeviation,MeanInterventions,MeanInterventions,MeanInterventions,Runtime,Runtime,Runtime,Evaluations,Evaluations,Evaluations,PETQ,PETQ,PETQ
+,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count
+Algorithm,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+APPO,1.0,,1,0.06493413788335883,,1,0.8145305761542876,,1,0.0,,1,0.01,,1,0.12444539398024741,,1,0.846875,,1,17.0,,1,22.37227519999942,,1,3000.0,,1,0.027581125357505558,,1
+APPO-NoAdaptation,5.0,,1,0.18122846141025556,,1,0.5528326902603927,,1,0.05326556062050672,,1,0.07,,1,0.1303687686447012,,1,0.8119642857142857,,1,17.4,,1,16.389485400000012,,1,3000.0,,1,0.11256127971749495,,1
+APPO-NoDualDiversity,1.0,,1,0.06493413788335883,,1,0.8145305761542876,,1,0.0,,1,0.01,,1,0.12444539398024741,,1,0.846875,,1,17.0,,1,18.608814399999574,,1,3000.0,,1,0.027581125357505558,,1
+APPO-NoMemory,2.0,,1,0.0784901430200087,,1,0.5668438518727666,,1,0.0,,1,0.02,,1,0.1649477732635899,,1,0.8774553571428572,,1,18.0,,1,17.90748580000036,,1,3000.0,,1,0.047027199987967415,,1
+APPO-NoRepair,56.0,,1,0.6647372361392705,,1,0.007352297105463847,,1,0.09230891875124447,,1,1.0,,1,0.16697459908688916,,1,0.6324167375283446,,1,13.589285714285714,,1,19.03663879999931,,1,3000.0,,1,33.73227196068442,,1

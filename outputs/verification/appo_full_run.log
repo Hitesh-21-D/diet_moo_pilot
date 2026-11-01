@@ -1,0 +1,120 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+
+==========================================================================================
+APPO - FINAL DIET OUTPUTS
+==========================================================================================
+
+--------------------------------------------------------------------------------
+Best Nutritional Match
+--------------------------------------------------------------------------------
+
+BREAKFAST
+  - Boiled egg (Ubla anda) | 3.00 egg
+  - Idli | 3.00 idli
+
+LUNCH
+  - Boiled rice (Uble chawal) | 2.00 plate
+  - Mixed vegetable salad with curd sauce | 0.50 bowl
+  - Spinach paneer (Palak paneer) | 0.75 bowl
+
+SNACK
+  - Rice flakes (Chiwda/Aval) | 2.00 bowl
+  - Lassi (salted) | 1.00 tall glass
+
+DINNER
+  - Boiled rice (Uble chawal) | 2.00 plate
+  - Pea paneer curry (Matar paneer) | 0.25 bowl
+  - Mixed vegetable salad with curd sauce | 0.25 bowl
+
+DAILY NUTRITION
+energy_kcal    : 2783.11
+protein_g      : 101.00
+carb_g         : 452.41
+fat_g          : 59.80
+fibre_g        : 31.98
+
+OBJECTIVES
+nutrition_deviation           : 0.029489
+habit_deviation               : 0.765625
+diversity_penalty             : 0.200000
+meal_distribution_deviation   : 0.070561
+
+Interventions: 14
+
+--------------------------------------------------------------------------------
+Minimum Dietary Change
+--------------------------------------------------------------------------------
+
+BREAKFAST
+  - Hot tea (Garam Chai) | 1.00 tea cup
+  - Boiled egg (Ubla anda) | 2.00 egg
+  - Idli | 3.00 idli
+
+LUNCH
+  - Sambar | 1.00 bowl
+  - Mixed vegetable salad with curd sauce | 1.00 bowl
+  - Boiled rice (Uble chawal) | 2.00 plate
+
+SNACK
+  - Vegetable poha | 1.25 bowl
+  - Hot tea (Garam Chai) | 1.00 tea cup
+
+DINNER
+  - Pea paneer curry (Matar paneer) | 1.00 bowl
+  - Boiled rice (Uble chawal) | 1.75 plate
+  - Cucumber raita (Kheere ka raita) | 1.00 bowl
+
+DAILY NUTRITION
+energy_kcal    : 2690.86
+protein_g      : 95.98
+carb_g         : 425.89
+fat_g          : 62.77
+fibre_g        : 48.37
+
+OBJECTIVES
+nutrition_deviation           : 0.172798
+habit_deviation               : 0.495833
+diversity_penalty             : 0.181818
+meal_distribution_deviation   : 0.101687
+
+Interventions: 10
+
+--------------------------------------------------------------------------------
+Balanced Compromise
+--------------------------------------------------------------------------------
+
+BREAKFAST
+  - Boiled egg (Ubla anda) | 3.00 egg
+  - Idli | 3.00 idli
+  - Scrambled egg (Ande ki bhurji) | 1.00 egg
+
+LUNCH
+  - Boiled rice (Uble chawal) | 2.00 plate
+  - Sambar | 1.00 bowl
+
+SNACK
+  - Vegetable poha | 1.00 bowl
+  - Sweet Lassi (Meethi lassi) | 1.00 tall glass
+
+DINNER
+  - Washed moong dal (Dhuli moong ki dal) | 1.50 bowl
+  - Boiled rice (Uble chawal) | 2.00 plate
+  - Vegetable curry with coconut | 0.25 bowl
+
+DAILY NUTRITION
+energy_kcal    : 2692.97
+protein_g      : 94.81
+carb_g         : 439.57
+fat_g          : 58.24
+fibre_g        : 38.07
+
+OBJECTIVES
+nutrition_deviation           : 0.084496
+habit_deviation               : 0.662500
+diversity_penalty             : 0.100000
+meal_distribution_deviation   : 0.060295
+
+Interventions: 13
+APPO: 57 feasible Pareto diets; feasibility=100.0%; evaluations=15000; runtime=167.07s
+Outputs: C:\Users\Hitesh\Desktop\diet_moo_pilot\outputs\experiments\20261031T044745408735Z_appo

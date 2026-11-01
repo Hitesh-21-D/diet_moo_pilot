@@ -171,7 +171,6 @@ def main():
         existing_diet=USER_PROFILE[
             "existing_diet"
         ],
-        penalty_factor=10.0,
     )
 
     result, runtime = run_moead(

@@ -69,6 +69,9 @@ def _sample_serving_gene(
     maximum = float(rule["max"])
     step = float(rule["step"])
 
+    if step <= 0 or maximum <= minimum:
+        return 0.0
+
     levels = (
         minimum
         + np.arange(
@@ -149,14 +152,11 @@ def _choose_role_valid_indices(meal_name, pool, rng):
         ]
 
     while len(selected) < 2:
-        role = str(rng.choice(optional_roles))
-        candidates = [
-            i for i in _role_candidates(pool, role)
-            if i not in selected
-        ]
-
-        if candidates:
-            selected.append(int(rng.choice(candidates)))
+        candidates = [i for role in optional_roles
+                      for i in _role_candidates(pool, role) if i not in selected]
+        if not candidates:
+            raise ValueError(f"{meal_name}: cannot construct two distinct role-valid foods")
+        selected.append(int(rng.choice(candidates)))
 
     if (
         len(selected) < FOOD_SLOTS_PER_MEAL
@@ -348,7 +348,7 @@ def initialize_appo_population(
     habit_count = int(
         round(
             config.population_size
-            * config.baseline_seed_fraction
+            * (config.baseline_seed_fraction if config.memory_enabled else 0.0)
         )
     )
 

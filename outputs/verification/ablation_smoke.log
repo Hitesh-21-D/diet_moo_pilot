@@ -1,0 +1,34 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+Running APPO seed 42 budget 1000
+Running APPO-NoMemory seed 42 budget 1000
+Running APPO-NoRepair seed 42 budget 1000
+Running APPO-NoAdaptation seed 42 budget 1000
+Running APPO-NoDualDiversity seed 42 budget 1000
+Running APPO seed 43 budget 1000
+Running APPO-NoMemory seed 43 budget 1000
+Running APPO-NoRepair seed 43 budget 1000
+Running APPO-NoAdaptation seed 43 budget 1000
+Running APPO-NoDualDiversity seed 43 budget 1000
+Running APPO seed 44 budget 1000
+Running APPO-NoMemory seed 44 budget 1000
+Running APPO-NoRepair seed 44 budget 1000
+Running APPO-NoAdaptation seed 44 budget 1000
+Running APPO-NoDualDiversity seed 44 budget 1000
+           Algorithm  Seed  UniqueFeasibleDiets       HV      IGD  Spacing  Feasibility  MeanNutritionDeviation  MeanHabitDeviation  MeanInterventions   Runtime  Evaluations     PETQ
+                APPO    42                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 15.479158         1000 0.000000
+       APPO-NoMemory    42                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 13.354382         1000 0.000000
+       APPO-NoRepair    42                    1 0.286607 1.046414 0.000000         0.02                0.142348            0.775000               17.0 11.849958         1000 0.094761
+   APPO-NoAdaptation    42                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 13.286721         1000 0.000000
+APPO-NoDualDiversity    42                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 12.810746         1000 0.000000
+                APPO    43                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 17.724425         1000 0.000000
+       APPO-NoMemory    43                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 25.025810         1000 0.000000
+       APPO-NoRepair    43                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 23.176706         1000 0.000000
+   APPO-NoAdaptation    43                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 23.542761         1000 0.000000
+APPO-NoDualDiversity    43                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 21.298669         1000 0.000000
+                APPO    44                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 22.486902         1000 0.000000
+       APPO-NoMemory    44                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 20.728095         1000 0.000000
+       APPO-NoRepair    44                    6 0.337421 0.150650 0.282489         0.06                0.168648            0.666419               13.0 25.116441         1000 0.848698
+   APPO-NoAdaptation    44                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 16.654390         1000 0.000000
+APPO-NoDualDiversity    44                    0 0.000000      inf      NaN         0.00                     NaN                 NaN                NaN 11.033800         1000 0.000000
+Outputs: C:\Users\Hitesh\Desktop\diet_moo_pilot\outputs\experiments\20261031T044844260811Z_ablation

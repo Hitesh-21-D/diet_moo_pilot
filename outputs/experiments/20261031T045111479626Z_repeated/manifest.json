@@ -1,0 +1,115 @@
+{
+  "requested_budget": 1000,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "profile": {
+    "age": 22,
+    "sex": "male",
+    "height_cm": 178,
+    "weight_kg": 57.5,
+    "activity_factor": 1.55,
+    "goal": "weight_gain",
+    "calorie_adjustment": 300,
+    "meals_per_day": 4,
+    "existing_diet": {
+      "breakfast": [
+        {
+          "food_code": "ASC144",
+          "food": "Idli",
+          "servings": 3.0
+        },
+        {
+          "food_code": "ASC167",
+          "food": "Sambar",
+          "servings": 1.0
+        },
+        {
+          "food_code": "ASC386",
+          "food": "Coconut chutney",
+          "servings": 1.0
+        }
+      ],
+      "lunch": [
+        {
+          "food_code": "ASC113",
+          "food": "Boiled rice",
+          "servings": 1.0
+        },
+        {
+          "food_code": "ASC167",
+          "food": "Sambar",
+          "servings": 1.0
+        },
+        {
+          "food_code": "ASC261",
+          "food": "Mixed vegetable salad with curd sauce",
+          "servings": 0.5
+        }
+      ],
+      "snack": [
+        {
+          "food_code": "BFP045",
+          "food": "Vegetable poha",
+          "servings": 1.0
+        },
+        {
+          "food_code": "ASC001",
+          "food": "Hot tea",
+          "servings": 1.0
+        }
+      ],
+      "dinner": [
+        {
+          "food_code": "ASC096",
+          "food": "Chapati/Roti",
+          "servings": 3.0
+        },
+        {
+          "food_code": "ASC191",
+          "food": "Matar paneer",
+          "servings": 1.0
+        }
+      ]
+    }
+  },
+  "dataset_sha256": "65f91911de09ebdb4b80c4a3dc3ff372a35420e05444239d8df8a42e8b5b9ecf",
+  "python": "3.12.5",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "pymoo": "0.6.2",
+    "matplotlib": "3.11.2",
+    "openpyxl": "3.1.5"
+  },
+  "configurations": {
+    "APPO": {
+      "population_size": 100,
+      "max_evaluations": 1000,
+      "archive_size": 100,
+      "seed": 42,
+      "baseline_seed_fraction": 0.3,
+      "initial_crossover_rate": 0.9,
+      "min_crossover_rate": 0.65,
+      "max_crossover_rate": 0.95,
+      "initial_mutation_rate": 0.2,
+      "min_mutation_rate": 0.05,
+      "max_mutation_rate": 0.4,
+      "habit_guided_mutation_probability": 0.35,
+      "repair_enabled": true,
+      "memory_enabled": true,
+      "adaptation_enabled": true,
+      "dual_diversity_enabled": true,
+      "decision_space_diversity_weight": 0.3,
+      "stagnation_window": 10,
+      "diversity_threshold": 0.15,
+      "max_repair_attempts": 20
+    }
+  },
+  "budget_policy": "APPO exact; baselines use whole generations at or below requested budget. MOEA/D population 84.",
+  "timing_policy": "External wall clock includes initialization and search; validation/export excluded.",
+  "validation_policy": "Post-search recomputation excluded from search budget, never fed back into optimization."
+}

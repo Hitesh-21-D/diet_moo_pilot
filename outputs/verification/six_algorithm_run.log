@@ -1,0 +1,33 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+Running NSGA-II, seed=42, requested budget=15000
+  95 diets; 15000 evaluations; 48.81s
+Running NSGA-III, seed=42, requested budget=15000
+  17 diets; 15000 evaluations; 95.24s
+Running MOEA/D, seed=42, requested budget=15000
+  27 diets; 14952 evaluations; 132.58s
+Running SPEA2, seed=42, requested budget=15000
+  100 diets; 15000 evaluations; 134.69s
+Running MOPSO, seed=42, requested budget=15000
+  92 diets; 15000 evaluations; 80.40s
+Running APPO, seed=42, requested budget=15000
+Traceback (most recent call last):
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\run_all_algorithms_with_appo.py", line 30, in <module>
+    diets.extend(save_run(path, run, problem))
+^^^^^^
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\run_all_algorithms_with_appo.py", line 18, in main
+    (path/'reuse_sources.json').write_text(json.dumps(args.reuse_from, indent=2))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\src\appo_experiments.py", line 66, in execute
+    if name.startswith('APPO'):
+                    ^^^^^^^^^^^^
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\src\algorithms\appo.py", line 76, in run_appo
+    x = offspring(a, b, context, config, rng, cross, mutation)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\src\algorithms\appo_operators.py", line 45, in offspring
+    x[2*slot+1] = _sample_serving_gene(rng, row)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hitesh\Desktop\diet_moo_pilot\src\algorithms\appo_initialization.py", line 75, in _sample_serving_gene
+    levels = (
+               
+ZeroDivisionError: float division by zero

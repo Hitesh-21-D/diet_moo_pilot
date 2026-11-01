@@ -1,0 +1,22 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+Running NSGA-II, seed=42, requested budget=15000
+  95 diets; 15000 evaluations; 48.81s
+Running NSGA-III, seed=42, requested budget=15000
+  17 diets; 15000 evaluations; 95.24s
+Running MOEA/D, seed=42, requested budget=15000
+  27 diets; 14952 evaluations; 132.58s
+Running SPEA2, seed=42, requested budget=15000
+  100 diets; 15000 evaluations; 134.69s
+Running MOPSO, seed=42, requested budget=15000
+  92 diets; 15000 evaluations; 80.40s
+Running APPO, seed=42, requested budget=15000
+  57 diets; 15000 evaluations; 167.07s
+Algorithm  Seed  UniqueFeasibleDiets       HV      IGD  Spacing  Feasibility  MeanNutritionDeviation  MeanHabitDeviation  MeanInterventions    Runtime  Evaluations     PETQ
+  NSGA-II    42                   95 0.643353 0.152075 0.049695          1.0                0.119569            0.744480          17.326316  48.812545        15000 1.454606
+ NSGA-III    42                   17 0.419330 0.332986 0.033799          1.0                0.161172            0.761479          18.941176  95.236620        15000 0.420780
+   MOEA/D    42                   27 0.472315 0.340985 0.037065          1.0                0.118820            0.538200          12.037037 132.581784        14952 0.539431
+    SPEA2    42                  100 0.767952 0.089908 0.023792          1.0                0.101349            0.724274          16.700000 134.691932        15000 2.972438
+    MOPSO    42                   92 0.527318 0.192356 0.030500          0.1                0.072908            0.747393          17.260870  80.402649        15000 0.943749
+     APPO    42                   57 0.686519 0.153920 0.087800          1.0                0.127938            0.680416          14.192982 167.071771        15000 1.639287
+Outputs: C:\Users\Hitesh\Desktop\diet_moo_pilot\outputs\experiments\20261031T045453134436Z_six_algorithms

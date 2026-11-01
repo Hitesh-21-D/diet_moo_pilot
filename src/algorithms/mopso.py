@@ -436,7 +436,7 @@ def evaluate_population(
 
         diet = problem.decode(x)
 
-        f = evaluate_objectives(
+        f = problem.objectives(diet) if hasattr(problem, "objectives") else evaluate_objectives(
             diet=diet,
             nutrient_targets=(
                 problem.nutrient_targets
@@ -446,7 +446,7 @@ def evaluate_population(
             ),
         )
 
-        cv = total_constraint_violation(
+        cv = float(np.maximum(problem.constraints(diet), 0).sum()) if hasattr(problem, "constraints") else total_constraint_violation(
             diet=diet,
             nutrient_targets=(
                 problem.nutrient_targets

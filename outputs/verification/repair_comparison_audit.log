@@ -1,0 +1,17 @@
+Original INDB shape: 1014 rows x 82 columns
+Serving-based pilot dataset shape: 818 rows x 8 columns
+    Algorithm  Seed  UniqueFeasibleDiets       HV      IGD  Spacing  Feasibility  MeanNutritionDeviation  MeanHabitDeviation  MeanInterventions   Runtime  Evaluations     PETQ
+         APPO    42                   57 0.627857 0.228845 0.077783          1.0                0.127938            0.680416          14.192982 79.274917        15000 1.008364
+APPO-NoRepair    42                  100 0.996313 0.067358 0.039322          1.0                0.120113            0.558115          12.970000 82.180176        15000 5.609328
+APPO-NoRepair    43                  100 0.918804 0.099177 0.057614          1.0                0.086939            0.655568          14.550000 83.842578        15000 3.376109
+         APPO    43                   63 0.618307 0.247354 0.062494          1.0                0.151547            0.630004          13.428571 77.960713        15000 0.936488
+         APPO    44                   61 0.591231 0.265046 0.049907          1.0                0.156769            0.659961          14.918033 74.836211        15000 0.806038
+APPO-NoRepair    44                  100 1.005702 0.072836 0.047786          1.0                0.099211            0.593288          13.500000 81.119437        15000 5.163421
+    Algorithm  Seed  RepairEvaluations  RepairBudgetFraction  Generations
+         APPO    42              13896              0.926400           11
+         APPO    43              13941              0.929400           10
+         APPO    44              13928              0.928533           10
+APPO-NoRepair    42                  0              0.000000          149
+APPO-NoRepair    43                  0              0.000000          149
+APPO-NoRepair    44                  0              0.000000          149
+Independent audit PASSED: outputs\experiments\20261031T050317555554Z_repair_comparison\REPORT.md

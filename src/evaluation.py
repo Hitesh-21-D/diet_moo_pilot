@@ -91,10 +91,7 @@ def extract_unique_feasible_solutions(
             chromosome
         )
 
-        if not is_feasible(
-            diet,
-            nutrient_targets,
-        ):
+        if not (np.all(problem.constraints(diet) <= 0) if hasattr(problem, "constraints") else is_feasible(diet, nutrient_targets)):
             continue
 
         signature = diet_signature(
@@ -108,7 +105,7 @@ def extract_unique_feasible_solutions(
             signature
         )
 
-        objectives = evaluate_objectives(
+        objectives = problem.objectives(diet) if hasattr(problem, "objectives") else evaluate_objectives(
             diet=diet,
             nutrient_targets=nutrient_targets,
             existing_diet=existing_diet,
@@ -178,10 +175,7 @@ def calculate_feasibility_rate(
             chromosome
         )
 
-        if is_feasible(
-            diet,
-            nutrient_targets,
-        ):
+        if (np.all(problem.constraints(diet) <= 0) if hasattr(problem, "constraints") else is_feasible(diet, nutrient_targets)):
             feasible_count += 1
 
     return (

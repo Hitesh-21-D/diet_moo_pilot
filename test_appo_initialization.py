@@ -294,7 +294,7 @@ def main():
             print(
                 f"  - {food['food_name']} "
                 f"| {food['servings']:.2f} "
-                f"{food['servings_unit']}"
+                f"{food['serving_unit']}"
             )
 
     print_section("FINAL VALIDATION")

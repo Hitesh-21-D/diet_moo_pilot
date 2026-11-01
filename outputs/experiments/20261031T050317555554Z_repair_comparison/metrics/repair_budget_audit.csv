@@ -1,0 +1,7 @@
+Algorithm,Seed,RepairEvaluations,RepairBudgetFraction,Generations
+APPO,42,13896,0.9264,11
+APPO,43,13941,0.9294,10
+APPO,44,13928,0.9285333333333333,10
+APPO-NoRepair,42,0,0.0,149
+APPO-NoRepair,43,0,0.0,149
+APPO-NoRepair,44,0,0.0,149
