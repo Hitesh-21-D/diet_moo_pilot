@@ -106,7 +106,49 @@ def test_resume_and_protocol_guard_without_reexecuting(tmp_path,monkeypatch):
         write_json(job_path(batch,case,a,42),dict(status='no_feasible'))
     def unexpected(*args,**kwargs):
         raise AssertionError('Completed jobs must not be executed again')
-    monkeypatch.setattr('research_batch.runner.subprocess.run',unexpected)
+    monkeypatch.setattr('research_batch.runner.wait_for_worker',unexpected)
     run_batch(workspace,'test',budget=100,seeds=[42])
     with pytest.raises(ValueError,match='protocol'):
         run_batch(workspace,'test',budget=200,seeds=[42])
+
+
+def test_incomplete_report_hides_table_unless_requested(tmp_path,capsys):
+    batch=tmp_path/'batch';case=dict(participant='a',case_hash='a')
+    write_json(batch/'protocol.json',dict(algorithms=ALGORITHMS,seeds=[42],budget=100))
+    write_json(batch/'cohort.json',{p:dict(status='ready',case_hash=p) for p in ['a','b']})
+    for a in ALGORITHMS:
+        write_json(job_path(batch,case,a,42),dict(algorithm=a,seed=42,status='no_feasible',F=[],runtime=1.,
+                                               evaluations=100,feasibility=0.,mean_interventions=None))
+    summarize(batch)
+    output=capsys.readouterr().out
+    assert 'PARTIAL BENCHMARK' in output and '1/2 eligible' in output
+    assert 'Success_mean' not in output
+    summarize(batch,show_partial=True)
+    output=capsys.readouterr().out
+    assert 'ONLY 1 complete participant' in output and 'Success_mean' in output and 'N/A' in output
+
+
+def test_worker_heartbeat_and_interrupt_cleanup(monkeypatch,capsys):
+    import subprocess
+    from research_batch.runner import wait_for_worker
+    class Process:
+        def __init__(self,interrupt=False): self.calls=0;self.killed=False;self.interrupt=interrupt
+        def __enter__(self): return self
+        def __exit__(self,*args): pass
+        def wait(self,timeout=None):
+            self.calls+=1
+            if self.calls==1:
+                if self.interrupt: raise KeyboardInterrupt()
+                raise subprocess.TimeoutExpired('test',timeout)
+            return 0
+        def poll(self): return None
+        def kill(self): self.killed=True
+    normal=Process()
+    monkeypatch.setattr('research_batch.runner.subprocess.Popen',lambda *a,**k:normal)
+    assert wait_for_worker(['test'],cwd='.',env={},log=None,timeout=60)==0
+    assert 'Still computing' in capsys.readouterr().out
+    interrupted=Process(interrupt=True)
+    monkeypatch.setattr('research_batch.runner.subprocess.Popen',lambda *a,**k:interrupted)
+    with pytest.raises(KeyboardInterrupt):
+        wait_for_worker(['test'],cwd='.',env={},log=None,timeout=60)
+    assert interrupted.killed and interrupted.calls==2

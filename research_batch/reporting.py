@@ -12,7 +12,7 @@ METRICS=['HV','IGD','Spacing','PETQ','Feasibility','Runtime','Evaluations','Uniq
          'MeanNutritionDeviation','MeanHabitDeviation','MeanInterventions','Success']
 
 
-def summarize(batch):
+def summarize(batch, show_partial=False):
     batch=Path(batch);protocol=read_json(batch/'protocol.json');cohort=read_json(batch/'cohort.json')
     if not protocol or cohort is None:
         raise ValueError('No batch protocol/cohort; run the batch first')
@@ -61,6 +61,11 @@ def summarize(batch):
                       failed_runs=sum(c['FailedRuns'] for c in coverage),expected_runs_per_ready_participant=expected,
                       partial=complete_count!=sum(c['ImportStatus']=='ready' for c in coverage))
     write_json(report/'summary.json',summary_info)
+    ready=summary_info['ready']
+    completed_jobs=sum(c['CompletedRuns'] for c in coverage if c['ImportStatus']=='ready')
+    print(f'\n{"PARTIAL BENCHMARK — NOT FINAL RESULTS" if summary_info["partial"] else "ELIGIBLE COHORT FINISHED"}',flush=True)
+    print(f'Participants complete: {complete_count}/{ready} eligible; {len(cohort)} registered; {summary_info["blocked"]} blocked by input issues.',flush=True)
+    print(f'Jobs finished: {completed_jobs}/{ready*expected}; failed: {summary_info["failed_runs"]}.',flush=True)
     if len(frame):
         # Each participant contributes once regardless of the number of seeds.
         means=frame.groupby(['Participant','Algorithm'],sort=True)[METRICS].mean().reset_index()
@@ -71,7 +76,11 @@ def summarize(batch):
         aggregate.columns=['_'.join(c) for c in aggregate.columns]
         aggregate.reset_index().to_csv(report/'aggregate_metrics.csv',index=False)
         paired_statistics(means.rename(columns={'Participant':'Seed'})).to_csv(report/'paired_statistics.csv',index=False)
-        print(aggregate[['Success_mean','HV_rank_mean','HV_mean','IGD_mean','Runtime_mean']].to_string(float_format=lambda n:f'{n:.4f}'),flush=True)
+        if not summary_info['partial'] or show_partial:
+            print(f'Metrics below cover ONLY {complete_count} complete participant(s). N/A means no defined metric.',flush=True)
+            print(aggregate[['Success_mean','HV_rank_mean','HV_mean','IGD_mean','Runtime_mean']].to_string(float_format=lambda n:f'{n:.4f}',na_rep='N/A'),flush=True)
+        else:
+            print('Aggregate table withheld because the cohort is incomplete. Use summarize --show-partial to inspect provisional metrics.',flush=True)
     else:
         for name in ['per_participant_metrics','aggregate_metrics','paired_statistics']:
             (report/f'{name}.csv').write_text('No complete participant cohorts\n',encoding='utf-8')

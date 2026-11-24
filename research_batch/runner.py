@@ -47,6 +47,26 @@ def job_path(batch, case, algorithm, seed):
     return Path(batch)/'runs'/f'{identity}.json'
 
 
+def wait_for_worker(command, *, cwd, env, log, timeout, heartbeat=10):
+    """Keep the terminal responsive and never leave a worker after Ctrl+C."""
+    started=time.monotonic()
+    with subprocess.Popen(command,cwd=cwd,env=env,stdout=log,stderr=subprocess.STDOUT) as proc:
+        try:
+            while True:
+                remaining=timeout-(time.monotonic()-started)
+                if remaining<=0:
+                    raise subprocess.TimeoutExpired(command,timeout)
+                try:
+                    return proc.wait(timeout=min(heartbeat,remaining))
+                except subprocess.TimeoutExpired:
+                    print(f'  Still computing: {time.monotonic()-started:.0f}s elapsed. Ctrl+C stops safely; no result yet.',flush=True)
+        except BaseException:
+            if proc.poll() is None:
+                proc.kill()
+            proc.wait()
+            raise
+
+
 def worker(request):
     r=read_json(request)
     if scientific_hashes()!=r['source_hashes'] or hashlib.sha256(get_dataset_path().read_bytes()).hexdigest()!=r['dataset_sha256']:
@@ -120,10 +140,10 @@ def run_batch(workspace, name, budget=15000, seeds=(42,), limit_participants=Non
         env=dict(os.environ,PYTHONHASHSEED='0',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',NUMEXPR_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1')
         try:
             with output.with_suffix('.log').open('w',encoding='utf-8') as log:
-                proc=subprocess.run([sys.executable,'-B',str(ROOT/'run_survey_benchmark.py'),'_worker',str(request_file)],
-                                    cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=timeout)
-            if proc.returncode!=0:
-                raise RuntimeError(f'Worker exited {proc.returncode}; inspect adjacent .log')
+                returncode=wait_for_worker([sys.executable,'-B',str(ROOT/'run_survey_benchmark.py'),'_worker',str(request_file)],
+                                          cwd=ROOT,env=env,log=log,timeout=timeout)
+            if returncode!=0:
+                raise RuntimeError(f'Worker exited {returncode}; inspect adjacent .log')
         except (subprocess.TimeoutExpired, RuntimeError) as e:
             write_json(output,dict(participant=case['participant'],case_hash=case['case_hash'],algorithm=algorithm,
                                    seed=seed,status='failed',error=str(e),runtime=time.perf_counter()-started))

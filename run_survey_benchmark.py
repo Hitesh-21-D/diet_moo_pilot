@@ -26,6 +26,7 @@ def main(argv=None):
     run.add_argument('--timeout',type=int,default=1800,help='Seconds per isolated job before marking it failed')
     summary=commands.add_parser('summarize',help='Regenerate aggregate reports from existing checkpoints')
     summary.add_argument('--batch',default='full-budget')
+    summary.add_argument('--show-partial',action='store_true',help='Explicitly display provisional metrics for incomplete cohorts')
     commands.add_parser('status',help='Show import eligibility and existing batches')
     worker=commands.add_parser('_worker',help=argparse.SUPPRESS)
     worker.add_argument('request',type=Path)
@@ -56,12 +57,12 @@ def main(argv=None):
                 try:
                     batch=run_batch(args.workspace,args.batch,args.budget,args.seeds,args.limit_participants,args.max_jobs,args.retry_failed,args.timeout)
                 except KeyboardInterrupt:
-                    print('\nStopped. Completed jobs are saved. Repeat the same command to resume.')
+                    print('\nINTERRUPTED (KeyboardInterrupt, usually Ctrl+C). This is not successful batch completion. Completed jobs are saved; the unfinished job will be retried on resume.')
                     summarize(args.workspace/'batches'/args.batch)
-                    return
+                    raise SystemExit(130)
                 summarize(batch)
             elif args.command=='summarize':
-                summarize(args.workspace/'batches'/args.batch)
+                summarize(args.workspace/'batches'/args.batch,show_partial=args.show_partial)
             else:
                 registry=read_json(args.workspace/'registry.json',{'participants':{}})['participants']
                 ready=sum(r['status']=='ready' for r in registry.values())

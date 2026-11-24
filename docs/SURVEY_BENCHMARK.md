@@ -169,3 +169,18 @@ A second invocation scheduled zero jobs and preserved all six checkpoint mtimes.
 The current aggregate is therefore a validation result for one respondent, not
 a completed 174-person study. The full-budget command continues the remaining
 552 jobs for the other 92 currently eligible respondents.
+
+## Interrupt and partial-report behavior (1 November update)
+
+Each worker prints a still-computing heartbeat every ten seconds. An interrupt
+(usually Ctrl+C) stops the active worker safely, preserves completed checkpoints,
+and exits with status 130. This does not indicate successful batch completion.
+The unfinished job is retried when you repeat the run command.
+
+Incomplete cohorts now show participant/job coverage before results and withhold
+the console aggregate table by default. Provisional CSV reports are still written;
+check summary.json and coverage.csv before interpreting them. To explicitly view
+the provisional table: `python -B run_survey_benchmark.py summarize --batch full-budget --show-partial`.
+N/A means an undefined metric, typically because no feasible diet was found.
+The six original checkpoints were preserved through this console-only update;
+the original protocol and source backups plus a migration audit remain in the batch folder.
